@@ -1,3 +1,8 @@
 <resources>
-    <string name="app_name">Bon Appetit</string>
+    <string name="app_name">Bon Appétit</string>
+    <string name="menu_publicarRestaurante">Publicar Restaurante</string>
+    <string name="menu_acerca">Acerca</string>
+    <string name="usuario">Usuario</string>
+    <string name="contrasena">Contraseña</string>
+    <string name="menu_logout">Cerrar Sesión</string>
 </resources>
