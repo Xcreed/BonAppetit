@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="10dp"
+    android:layout_marginTop="10dp"
+    android:layout_marginBottom="20dp"
+    android:scrollbars="vertical"
+    android:textAlignment="center"
+    app:cardCornerRadius="20dp">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="124dp"
+        android:textAlignment="inherit">
+
+        <TextView
+            android:id="@+id/tvNombreRestaurante"
+            android:layout_width="201dp"
+            android:layout_height="31dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="32dp"
+            android:text="Nombre_Rest"
+            android:textAlignment="inherit"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/ivImagen"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/ivImagen"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginStart="28dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginBottom="32dp"
+            android:adjustViewBounds="true"
+            android:cropToPadding="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:srcCompat="@tools:sample/avatars" />
+
+        <TextView
+            android:id="@+id/tvTipoComida"
+            android:layout_width="94dp"
+            android:layout_height="18dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="12dp"
+            android:text="Tipo"
+            android:textAlignment="inherit"
+            app:layout_constraintStart_toEndOf="@+id/ivImagen"
+            app:layout_constraintTop_toBottomOf="@+id/tvNombreRestaurante" />
+
+        <TextView
+            android:id="@+id/tvRango"
+            android:layout_width="81dp"
+            android:layout_height="18dp"
+            android:layout_marginEnd="32dp"
+            android:text="Rango"
+            android:textAlignment="inherit"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tvTipoComida" />
+
+        <TextView
+            android:id="@+id/tvUbicacion"
+            android:layout_width="201dp"
+            android:layout_height="22dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="16dp"
+            android:text="Ubicacion"
+            android:textAlignment="inherit"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.507"
+            app:layout_constraintStart_toEndOf="@+id/ivImagen"
+            app:layout_constraintTop_toBottomOf="@+id/tvTipoComida" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>
