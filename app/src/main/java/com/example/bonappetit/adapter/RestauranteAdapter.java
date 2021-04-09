@@ -47,7 +47,7 @@ public class RestauranteAdapter extends FirebaseRecyclerAdapter<
 
 
         holder.nombre.setText(model.getNombre());
-
+        holder.tipoComida.setText(model.getTipoComida());
         holder.rangoPrecio.setText(model.getRangoPrecio());
         holder.ubicacion.setText(model.getUbicacion());
     }
@@ -66,14 +66,14 @@ public class RestauranteAdapter extends FirebaseRecyclerAdapter<
 
     class RestauranteViewholder
             extends RecyclerView.ViewHolder {
-        TextView nombre, rangoPrecio, ubicacion;
+        TextView nombre, rangoPrecio, ubicacion, tipoComida;
         ImageView imagen;
         public RestauranteViewholder(@NonNull View itemView)
         {
             super(itemView);
 
 
-
+            tipoComida = itemView.findViewById(R.id.tvTipoComida);
             imagen = itemView.findViewById(R.id.ivImagen);
             nombre = itemView.findViewById(R.id.tvNombreRestaurante);
             rangoPrecio = itemView.findViewById(R.id.tvRango);

@@ -9,6 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.BonAppetit">
+        <activity android:name=".RestauranteActivity"></activity>
         <activity android:name=".AcercaDeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -11,6 +11,11 @@ public class Restaurante {
     private String tipoComida;
     private String nombre;
     private String imagenPerfil;
+    private String imagenComida;
+    private String latitud_longitud;
+    private String website;
+    private String linkOrdenar;
+
 
 
 
@@ -79,5 +84,37 @@ public class Restaurante {
 
     public void setImagenPerfil(String imagenPerfil) {
         this.imagenPerfil = imagenPerfil;
+    }
+
+    public String getLatitud_longitud() {
+        return latitud_longitud;
+    }
+
+    public void setLatitud_longitud(String latitud_longitud) {
+        this.latitud_longitud = latitud_longitud;
+    }
+
+    public String getWebsite() {
+        return website;
+    }
+
+    public void setWebsite(String website) {
+        this.website = website;
+    }
+
+    public String getLinkOrdenar() {
+        return linkOrdenar;
+    }
+
+    public void setLinkOrdenar(String linkOrdenar) {
+        this.linkOrdenar = linkOrdenar;
+    }
+
+    public String getImagenComida() {
+        return imagenComida;
+    }
+
+    public void setImagenComida(String imagenComida) {
+        this.imagenComida = imagenComida;
     }
 }
