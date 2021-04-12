@@ -1,16 +1,240 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
     tools:context=".PublicarActivity">
 
     <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
+        android:id="@+id/tvvacio"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/tv_ingresaRest"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="PUBLICAR"
-        tools:layout_editor_absoluteX="77dp"
-        tools:layout_editor_absoluteY="32dp" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:text="Ingresa tu Restaurante"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="#0C0505"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tvvacio2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/tv_InformacionGeneral"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Informacion General"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textColor="#000000" />
+
+    <TextView
+        android:id="@+id/tvvacio3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/tv_Nombre"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Nombre del Restaurante:"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small"
+        android:textColor="#221414" />
+
+    <EditText
+        android:id="@+id/et_NombreRest"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+
+    <TextView
+        android:id="@+id/tv_TipoCom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Tipo de Comida:"
+        android:textColor="#150D0D" />
+
+    <EditText
+        android:id="@+id/et_TipoComida"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+
+    <TextView
+        android:id="@+id/tv_Website"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Sitio Web:"
+        android:textColor="#130D0D" />
+
+    <EditText
+        android:id="@+id/et_SitioWeb"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+
+    <TextView
+        android:id="@+id/tv_linkOrd"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Link para ordenar:"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small"
+        android:textColor="#090606" />
+
+    <EditText
+        android:id="@+id/et_OrderLink"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+
+    <TextView
+        android:id="@+id/tv_DondeTeUbicas"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="¿Dónde te ubicas?"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textColor="#000000" />
+
+    <TextView
+        android:id="@+id/tv_Ubicacion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Ubicación:"
+        android:textColor="#191010" />
+
+    <EditText
+        android:id="@+id/et_Ubicacion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+
+    <TextView
+        android:id="@+id/tv_Latitud"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Latitud:"
+        android:textColor="#1E1212" />
+
+    <EditText
+        android:id="@+id/et_Latitud"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+
+    <TextView
+        android:id="@+id/tv_Longitud"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Longitud:"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small"
+        android:textColor="#171010" />
+
+    <EditText
+        android:id="@+id/et_Longitud"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+
+    <TextView
+        android:id="@+id/tv_FotosLogos"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Fotos y Logos (JPG)"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textColor="#000000" />
+
+    <TextView
+        android:id="@+id/tv_FotoPerfil"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Foto de Perfil:"
+        android:textColor="#150E0E" />
+
+    <EditText
+        android:id="@+id/et_FotoPerfil"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+
+    <TextView
+        android:id="@+id/tv_ImagenComida"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Imagen de un plato:"
+        android:textColor="#231414" />
+
+    <EditText
+        android:id="@+id/et_ImagenComida"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName" />
+
+    <TextView
+        android:id="@+id/textView17"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Imagenes del Menu:"
+        android:textColor="#131010" />
+
+    <TextView
+        android:id="@+id/tv_ImagenMenu1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Imagen #1" />
+
+    <EditText
+        android:id="@+id/et_ImagenMenu1"
+        android:layout_width="match_parent"
+        android:layout_height="27dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+
+    <TextView
+        android:id="@+id/tv_ImagenMenu2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Imagen #2" />
+
+    <EditText
+        android:id="@+id/et_ImagenMenu2"
+        android:layout_width="match_parent"
+        android:layout_height="27dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+
+    <Button
+        android:id="@+id/bt_IngresarRestaurante"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Ingresar Restaurante" />
+
+</LinearLayout>
