@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
@@ -17,6 +18,7 @@ import android.widget.Toast;
 import com.example.bonappetit.model.Restaurante;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -24,6 +26,7 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -174,10 +177,72 @@ public class PublicarActivity extends AppCompatActivity implements View.OnClickL
         /** Link de Subida de Foto de Perfil
          * Esto nos funciona para poder subir los links a RealTime database
          */
-        String FotoPerfil = FirebaseStorage.getInstance().getReference().child(fotoPerfil).getPath();
-        String FotoComida = FirebaseStorage.getInstance().getReference().child(ImagenComida).getPath();
-        String FotoMenu1 = FirebaseStorage.getInstance().getReference().child(ImagenMenu1).getPath();
-        String FotoMenu2 = FirebaseStorage.getInstance().getReference().child(ImagenMenu2).getPath();
+
+        final String[] FotoPerfil = new String[1];
+        final String[] FotoComida = new String[1];
+        final String[] FotoMenu1 = new String[1];
+        final String[] FotoMenu2 = new String[1];
+
+        // Foto Perfil
+        storageReference.child(fotoPerfil).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+            @Override
+            public void onSuccess(Uri uri)  {
+               //Download URL para fotoPerfil
+                Task<Uri> downloadUri = FirebaseStorage.getInstance().getReference().child(fotoPerfil).getDownloadUrl();
+                FotoPerfil[0] = downloadUri.toString();  //Link de la Imagen
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception exception) {
+                Toast.makeText(PublicarActivity.this, "Error al obtener el link de la imagen", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        // Imagen Comida
+        storageReference.child(ImagenComida).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+            @Override
+            public void onSuccess(Uri uri)  {
+                //Download URL para ImagenComida
+                Task<Uri> downloadUri = FirebaseStorage.getInstance().getReference().child(ImagenComida).getDownloadUrl();
+                FotoComida[0] = downloadUri.toString();  //Link de la Imagen
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception exception) {
+                Toast.makeText(PublicarActivity.this, "Error al obtener el link de la imagen", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        // ImagenMenu1
+        storageReference.child(ImagenMenu1).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+            @Override
+            public void onSuccess(Uri uri)  {
+                //Download URL para ImagenComida
+                Task<Uri> downloadUri = FirebaseStorage.getInstance().getReference().child(ImagenMenu1).getDownloadUrl();
+                FotoMenu1[0] = downloadUri.toString();  //Link de la Imagen
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception exception) {
+                Toast.makeText(PublicarActivity.this, "Error al obtener el link de la imagen", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        // ImagenMenu1
+        storageReference.child(ImagenMenu2).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+            @Override
+            public void onSuccess(Uri uri)  {
+                //Download URL para ImagenComida
+                Task<Uri> downloadUri = FirebaseStorage.getInstance().getReference().child(ImagenMenu2).getDownloadUrl();
+                 FotoMenu2[0] = downloadUri.toString(); //Link de la Imagen
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception exception) {
+                Toast.makeText(PublicarActivity.this, "Error al obtener el link de la imagen", Toast.LENGTH_SHORT).show();
+            }
+        });
+
 
         /**
          * Subida del Restaurante a Real Time Database
@@ -190,8 +255,8 @@ public class PublicarActivity extends AppCompatActivity implements View.OnClickL
 
         // Array De las fotos de los Menus > con el Link de Storage
         ArrayList<String> Menu = new ArrayList<String>();
-        Menu.add(FotoMenu1);
-        Menu.add(FotoMenu2);
+        Menu.add(FotoMenu1[0]);
+        Menu.add(FotoMenu2[0]);
 
         // Generamos el nuevo objeto restaurante con los valores
         Restaurante rest = new Restaurante();
@@ -204,8 +269,8 @@ public class PublicarActivity extends AppCompatActivity implements View.OnClickL
         rest.setLatitud(et_Latitud.getText().toString());
         rest.setLongitud(et_Longitud.getText().toString());
         rest.setImagenesMenu(Menu);
-        rest.setImagenPerfil(FotoPerfil);
-        rest.setImagenComida(ImagenComida);
+        rest.setImagenPerfil(FotoPerfil[0]);
+        rest.setImagenComida(FotoComida[0]);
 
         /// Obtenemos la instancia RealTime
        database=FirebaseDatabase.getInstance();
@@ -214,4 +279,10 @@ public class PublicarActivity extends AppCompatActivity implements View.OnClickL
         myRef.child(rest.getNombre()).setValue(rest);
 
     }
+
+    public void onActivityResult(int cod1,int cod2,Intent datos) {
+        super.onActivityResult(cod1, cod2, datos);
+        uri = datos.getData();
+    }
+
 }
