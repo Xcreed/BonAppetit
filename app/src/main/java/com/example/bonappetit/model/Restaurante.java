@@ -1,8 +1,9 @@
 package com.example.bonappetit.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Restaurante {
+public class Restaurante implements Serializable {
 
     private String id;
     private String rangoPrecio;

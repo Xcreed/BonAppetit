@@ -7,6 +7,7 @@
     android:layout_marginHorizontal="10dp"
     android:layout_marginTop="10dp"
     android:layout_marginBottom="20dp"
+    android:clickable="true"
     android:scrollbars="vertical"
     android:textAlignment="center"
     app:cardCornerRadius="20dp">
@@ -15,6 +16,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="124dp"
+        android:clickable="false"
         android:textAlignment="inherit">
 
         <TextView

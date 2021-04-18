@@ -22,6 +22,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.firestore.DocumentSnapshot;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,6 +38,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        setUpRecyclerView();
+    }
+
+    private void setUpRecyclerView(){
         mbase = FirebaseDatabase.getInstance().getReference("restaurantes");
 
         recyclerView = findViewById(R.id.rvRestaurantes);
@@ -47,29 +52,37 @@ public class MainActivity extends AppCompatActivity {
                 = new FirebaseRecyclerOptions.Builder<Restaurante>()
                 .setQuery(mbase, Restaurante.class)
                 .build();
+        adapter = new RestauranteAdapter(options);
+        recyclerView.setAdapter(adapter);
 
+//        mbase.addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(DocumentSnapshot dataSnapshot) {
+//                List<Restaurante> list = new ArrayList<Restaurante>();
+//                for (DataSnapshot child : dataSnapshot.getChildren()) {
+//                    list.add(child.getValue(Restaurante.class));
+//                }
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError error) {
+//                Toast.makeText(MainActivity.this, "Error...", Toast.LENGTH_SHORT).show();
+//            }
+//        });
 
-
-        mbase.addValueEventListener(new ValueEventListener() {
+        adapter.setOnItemClickListener(new RestauranteAdapter.OnItemClickListener() {
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                List<Restaurante> list = new ArrayList<Restaurante>();
-                for (DataSnapshot child : dataSnapshot.getChildren()) {
-                    list.add(child.getValue(Restaurante.class));
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(MainActivity.this, "Error...", Toast.LENGTH_SHORT).show();
+            public void onItemClick(DataSnapshot dataSnapshot, int position) {
+                Restaurante restaurante = dataSnapshot.getValue(Restaurante.class);
+//                Toast.makeText(MainActivity.this,
+//                        "Position: " + position + "restaurante" + restaurante.getNombre() , Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getApplicationContext(), RestauranteActivity.class);
+                intent.putExtra("restaurante", restaurante);
+                startActivity(intent);
             }
         });
 
-        adapter = new RestauranteAdapter(options);
-        recyclerView.setAdapter(adapter);
     }
-
-
 
     @Override protected void onStart()
     {
