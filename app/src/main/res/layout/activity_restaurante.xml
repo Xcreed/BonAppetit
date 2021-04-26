@@ -10,7 +10,7 @@
     <ImageView
         android:id="@+id/imgComida"
         android:layout_width="match_parent"
-        android:layout_height="224dp"
+        android:layout_height="200dp"
         android:scaleType="centerCrop"
         tools:srcCompat="@tools:sample/backgrounds/scenic" />
 
@@ -154,16 +154,12 @@
             android:text="@string/ordenar" />
     </LinearLayout>
 
-    <ImageView
-        android:id="@+id/expanded_image"
+    <ImageButton
+        android:id="@+id/mapa"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:visibility="invisible"
-        />
-
-    <com.google.android.gms.maps.MapView
-        android:id="@+id/mapView2"
-        android:layout_width="match_parent"
-        android:layout_height="129dp" />
+        android:layout_height="100dp"
+        android:backgroundTint="#00FFFFFF"
+        android:scaleType="centerCrop"
+        app:srcCompat="@android:drawable/ic_menu_mapmode" />
 
 </LinearLayout>

@@ -39,6 +39,7 @@ public class RestauranteActivity extends AppCompatActivity {
     private ArrayList<String> imagenesMenu;
     private Button visitar;
     private Button ordenar;
+    private ImageButton mapa;
 
 
     private Restaurante restaurante;
@@ -58,6 +59,7 @@ public class RestauranteActivity extends AppCompatActivity {
         imagenComida = findViewById(R.id.imgComida);
         visitar = findViewById(R.id.btVisitar);
         ordenar = findViewById(R.id.btOrdenar);
+        mapa = findViewById(R.id.mapa);
 
         Restaurante restaurante = (Restaurante) getIntent().getSerializableExtra("restaurante");
         Toast.makeText(RestauranteActivity.this,
@@ -101,6 +103,18 @@ public class RestauranteActivity extends AppCompatActivity {
                     Toast.makeText(RestauranteActivity.this,
                             "Esta opción no está disponible. ", Toast.LENGTH_SHORT).show();
                 }
+            }
+        });
+        new DownloadImageTask(mapa)
+                .execute("https://firebasestorage.googleapis.com/v0/b/bon-appetit-8942a.appspot.com/o/mapa.jpg?alt=media&token=f8a9b4c7-fc1c-487c-bc5d-de9f99412783");
+        latitud_longitud = restaurante.getLatitud_longitud();
+        mapa.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Uri location = Uri.parse("geo:"+latitud_longitud+"?q="+restaurante.getNombre());
+                Intent mapIntent = new Intent(Intent.ACTION_VIEW, location);
+                mapIntent.setPackage("com.google.android.apps.maps");
+                startActivity(mapIntent);
             }
         });
 
