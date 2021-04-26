@@ -7,7 +7,7 @@ public class Restaurante implements Serializable {
 
     private String id;
     private String rangoPrecio;
-    private ArrayList<String> imagenesMenu;
+    private String imagenesMenu;
     private String ubicacion;
     private String tipoComida;
     private String nombre;
@@ -20,7 +20,7 @@ public class Restaurante implements Serializable {
 
 
 
-    public Restaurante(String id, String rangoPrecio, ArrayList<String> imagenesMenu, String ubicacion, String tipoComida) {
+    public Restaurante(String id, String rangoPrecio, String imagenesMenu, String ubicacion, String tipoComida) {
         this.id = id;
         this.rangoPrecio = rangoPrecio;
         this.imagenesMenu = imagenesMenu;
@@ -55,11 +55,11 @@ public class Restaurante implements Serializable {
         this.rangoPrecio = rangoPrecio;
     }
 
-    public ArrayList<String> getImagenesMenu() {
+    public String getImagenesMenu() {
         return imagenesMenu;
     }
 
-    public void setImagenesMenu(ArrayList<String> imagenesMenu) {
+    public void setImagenesMenu(String imagenesMenu) {
         this.imagenesMenu = imagenesMenu;
     }
 

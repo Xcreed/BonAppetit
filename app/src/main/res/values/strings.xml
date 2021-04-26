@@ -5,4 +5,8 @@
     <string name="usuario">Usuario</string>
     <string name="contrasena">Contraseña</string>
     <string name="menu_logout">Cerrar Sesión</string>
+    <string name="middleDot"> • </string>
+    <string name="menu">Menú</string>
+    <string name="visitar">Visitar</string>
+    <string name="ordenar">Ordenar!</string>
 </resources>
