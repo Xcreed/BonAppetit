@@ -1,14 +1,20 @@
 package com.example.bonappetit;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
 
+import android.Manifest;
+import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Environment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,8 +27,12 @@ import android.widget.Toast;
 
 import com.example.bonappetit.model.Restaurante;
 import com.squareup.picasso.Picasso;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.InputStream;
+import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -41,8 +51,10 @@ public class RestauranteActivity extends AppCompatActivity {
     private Button visitar;
     private Button ordenar;
     private ImageButton mapa;
-
-
+    private FloatingActionButton fab_favoritos;
+    private static final int REQUEST_EXTERNAL_STORAGE = 1;
+    private static String[] PERMISSIONS_STORAGE = {
+            Manifest.permission.READ_EXTERNAL_STORAGE};
     private Restaurante restaurante;
 
     public int i = 0;
@@ -61,6 +73,7 @@ public class RestauranteActivity extends AppCompatActivity {
         visitar = findViewById(R.id.btVisitar);
         ordenar = findViewById(R.id.btOrdenar);
         mapa = findViewById(R.id.mapa);
+        fab_favoritos = findViewById(R.id.fba_favoritos);
 
         Restaurante restaurante = (Restaurante) getIntent().getSerializableExtra("restaurante");
         Toast.makeText(RestauranteActivity.this,
@@ -77,7 +90,12 @@ public class RestauranteActivity extends AppCompatActivity {
         new DownloadImageTask(imagenComida)
                 .execute(restaurante.getImagenComida());
 
-
+        fab_favoritos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                agregarFavoritos(restaurante.getNombre());
+            }
+        });
         website = restaurante.getWebsite();
         linkOrdenar = restaurante.getLinkOrdenar();
         visitar.setOnClickListener(new View.OnClickListener() {
@@ -171,6 +189,26 @@ public class RestauranteActivity extends AppCompatActivity {
         protected void onPostExecute(Bitmap result) {
             bmImage.setImageBitmap(result);
         }
+    }
+
+    private void agregarFavoritos(String nombreRestaurante){
+        try {
+
+            File f = File.createTempFile( "favoritos","txt");
+
+            FileOutputStream fOut = new FileOutputStream(f);
+            OutputStreamWriter myOutWriter = new OutputStreamWriter(fOut);
+            myOutWriter.append(nombreRestaurante);
+            myOutWriter.append("\n");
+
+            myOutWriter.close();
+
+            fOut.flush();
+            fOut.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }
 
 
