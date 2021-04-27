@@ -1,9 +1,8 @@
 package com.example.bonappetit.model;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Restaurante implements Serializable {
+public class Restaurante {
 
     private String id;
     private String rangoPrecio;
@@ -13,19 +12,24 @@ public class Restaurante implements Serializable {
     private String nombre;
     private String imagenPerfil;
     private String imagenComida;
-    private String latitud_longitud;
+    private String latitud;
+    private String longitud;
     private String website;
     private String linkOrdenar;
 
-
-
-
-    public Restaurante(String id, String rangoPrecio, String imagenesMenu, String ubicacion, String tipoComida) {
+    public Restaurante(String id, String rangoPrecio, String imagenesMenu, String ubicacion, String tipoComida, String nombre, String imagenPerfil, String imagenComida, String latitud, String longitud, String website, String linkOrdenar) {
         this.id = id;
         this.rangoPrecio = rangoPrecio;
         this.imagenesMenu = imagenesMenu;
         this.ubicacion = ubicacion;
         this.tipoComida = tipoComida;
+        this.nombre = nombre;
+        this.imagenPerfil = imagenPerfil;
+        this.imagenComida = imagenComida;
+        this.latitud = latitud;
+        this.longitud = longitud;
+        this.website = website;
+        this.linkOrdenar = linkOrdenar;
     }
 
     public Restaurante() {
@@ -87,12 +91,20 @@ public class Restaurante implements Serializable {
         this.imagenPerfil = imagenPerfil;
     }
 
-    public String getLatitud_longitud() {
-        return latitud_longitud;
+    public String getLatitud() {
+        return latitud;
     }
 
-    public void setLatitud_longitud(String latitud_longitud) {
-        this.latitud_longitud = latitud_longitud;
+    public void setLatitud(String latitud) {
+        this.latitud = latitud;
+    }
+
+    public String getLongitud() {
+        return longitud;
+    }
+
+    public void setLongitud(String longitud) {
+        this.longitud = longitud;
     }
 
     public String getWebsite() {
