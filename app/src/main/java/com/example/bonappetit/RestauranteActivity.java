@@ -126,7 +126,7 @@ public class RestauranteActivity extends AppCompatActivity {
         });
         new DownloadImageTask(mapa)
                 .execute("https://firebasestorage.googleapis.com/v0/b/bon-appetit-8942a.appspot.com/o/mapa.jpg?alt=media&token=f8a9b4c7-fc1c-487c-bc5d-de9f99412783");
-        latitud_longitud = restaurante.getLatitud_longitud();
+        latitud_longitud = restaurante.getLatitud()+","+restaurante.getLongitud();
         mapa.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
