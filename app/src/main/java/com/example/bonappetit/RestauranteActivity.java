@@ -20,6 +20,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.bonappetit.model.Restaurante;
+import com.squareup.picasso.Picasso;
 
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -128,22 +129,26 @@ public class RestauranteActivity extends AppCompatActivity {
         for(i=0; i<arrayLength;i++) {
             View view = inflater.inflate(R.layout.items, galleryMenu, false);
             ImageView imageView = view.findViewById(R.id.imageView);
-            new DownloadImageTask(imageView)
-                    .execute(imagenesMenu.get(i));
+
+           //new DownloadImageTask(imageView)
+                //    .execute(imagenesMenu.get(i));
+            Picasso.get().load(imagenesMenu.get(i)).into(imageView);
 
             galleryMenu.addView(view);
-
-            imageView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-
-                }
-            });
         }
+
+        galleryMenu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), FullImage.class);
+                intent.putExtra("array", imagenesMenu);
+                startActivity(intent);
+            }
+        });
 
     }
 
-    private class DownloadImageTask extends AsyncTask<String, Void, Bitmap> {
+    public static class DownloadImageTask extends AsyncTask<String, Void, Bitmap> {
         ImageView bmImage;
 
         public DownloadImageTask(ImageView bmImage) {
