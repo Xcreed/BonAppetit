@@ -55,21 +55,6 @@ public class MainActivity extends AppCompatActivity {
         adapter = new RestauranteAdapter(options);
         recyclerView.setAdapter(adapter);
 
-//        mbase.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(DocumentSnapshot dataSnapshot) {
-//                List<Restaurante> list = new ArrayList<Restaurante>();
-//                for (DataSnapshot child : dataSnapshot.getChildren()) {
-//                    list.add(child.getValue(Restaurante.class));
-//                }
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError error) {
-//                Toast.makeText(MainActivity.this, "Error...", Toast.LENGTH_SHORT).show();
-//            }
-//        });
-
         adapter.setOnItemClickListener(new RestauranteAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(DataSnapshot dataSnapshot, int position) {
