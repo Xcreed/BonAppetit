@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true">
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
@@ -107,6 +107,10 @@
         android:inputType="textPersonName"
         android:textAppearance="@style/TextAppearance.AppCompat.Small" />
 
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="34dp" />
+
     <TextView
         android:id="@+id/tv_DondeTeUbicas"
         android:layout_width="match_parent"
@@ -162,6 +166,10 @@
         android:inputType="textPersonName"
         android:textAppearance="@style/TextAppearance.AppCompat.Small" />
 
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="34dp" />
+
     <TextView
         android:id="@+id/tv_FotosLogos"
         android:layout_width="match_parent"
@@ -178,13 +186,25 @@
         android:text="Foto de Perfil:"
         android:textColor="#150E0E" />
 
-    <EditText
-        android:id="@+id/et_FotoPerfil"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/bt_buscarP"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Buscar foto de Perfil"
+            android:textColor="#FFFFFF"
+            app:iconTint="#FFFFFF" />
+
+    </LinearLayout>
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="29dp" />
 
     <TextView
         android:id="@+id/tv_ImagenComida"
@@ -193,47 +213,48 @@
         android:text="Imagen de un plato:"
         android:textColor="#231414" />
 
-    <EditText
-        android:id="@+id/et_ImagenComida"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName" />
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/bt_buscarC"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Buscar foto de un plato" />
+
+    </LinearLayout>
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="34dp" />
 
     <TextView
         android:id="@+id/textView17"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Imagenes del Menu:"
+        android:text="Imagen del Menu:"
         android:textColor="#131010" />
 
-    <TextView
-        android:id="@+id/tv_ImagenMenu1"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Imagen #1" />
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
 
-    <EditText
-        android:id="@+id/et_ImagenMenu1"
-        android:layout_width="match_parent"
-        android:layout_height="27dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+        <Button
+            android:id="@+id/bt_buscarM"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Imagen del Menu" />
 
-    <TextView
-        android:id="@+id/tv_ImagenMenu2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Imagen #2" />
+    </LinearLayout>
 
-    <EditText
-        android:id="@+id/et_ImagenMenu2"
+    <Space
         android:layout_width="match_parent"
-        android:layout_height="27dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+        android:layout_height="40dp" />
 
     <Button
         android:id="@+id/bt_IngresarRestaurante"

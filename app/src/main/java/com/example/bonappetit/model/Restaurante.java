@@ -6,7 +6,7 @@ public class Restaurante {
 
     private String id;
     private String rangoPrecio;
-    private ArrayList<String> imagenesMenu;
+    private String imagenesMenu;
     private String ubicacion;
     private String tipoComida;
     private String nombre;
@@ -17,7 +17,7 @@ public class Restaurante {
     private String website;
     private String linkOrdenar;
 
-    public Restaurante(String id, String rangoPrecio, ArrayList<String> imagenesMenu, String ubicacion, String tipoComida, String nombre, String imagenPerfil, String imagenComida, String latitud, String longitud, String website, String linkOrdenar) {
+    public Restaurante(String id, String rangoPrecio, String imagenesMenu, String ubicacion, String tipoComida, String nombre, String imagenPerfil, String imagenComida, String latitud, String longitud, String website, String linkOrdenar) {
         this.id = id;
         this.rangoPrecio = rangoPrecio;
         this.imagenesMenu = imagenesMenu;
@@ -59,11 +59,11 @@ public class Restaurante {
         this.rangoPrecio = rangoPrecio;
     }
 
-    public ArrayList<String> getImagenesMenu() {
+    public String getImagenesMenu() {
         return imagenesMenu;
     }
 
-    public void setImagenesMenu(ArrayList<String> imagenesMenu) {
+    public void setImagenesMenu(String imagenesMenu) {
         this.imagenesMenu = imagenesMenu;
     }
 
