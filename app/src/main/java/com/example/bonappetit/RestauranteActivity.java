@@ -76,8 +76,6 @@ public class RestauranteActivity extends AppCompatActivity {
         fab_favoritos = findViewById(R.id.fba_favoritos);
 
         Restaurante restaurante = (Restaurante) getIntent().getSerializableExtra("restaurante");
-        Toast.makeText(RestauranteActivity.this,
-        "restaurante" + restaurante.getNombre() , Toast.LENGTH_SHORT).show();
 
         tvNombre.setText(""+restaurante.getNombre());
         tvtipoComida.setText(""+restaurante.getTipoComida());
