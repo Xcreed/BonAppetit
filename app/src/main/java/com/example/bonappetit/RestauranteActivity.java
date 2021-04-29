@@ -17,6 +17,9 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -26,6 +29,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.bonappetit.model.Restaurante;
+import com.google.firebase.auth.FirebaseAuth;
 import com.squareup.picasso.Picasso;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -139,7 +143,7 @@ public class RestauranteActivity extends AppCompatActivity {
         LinearLayout galleryMenu = findViewById(R.id.galleryMenu);
         LayoutInflater inflater = LayoutInflater.from(this);
         String listaImagenes = restaurante.getImagenesMenu();
-        imagenesMenu = new ArrayList<String>(Arrays.asList(listaImagenes.split(",")));
+        imagenesMenu = new ArrayList<String>(Arrays.asList(listaImagenes.split(", ")));
         int arrayLength = imagenesMenu.size();
 
         for(i=0; i<arrayLength;i++) {
@@ -208,6 +212,41 @@ public class RestauranteActivity extends AppCompatActivity {
         }
 
     }
+
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu, menu);
+        return true;
+    }
+
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        if (item.getItemId() == R.id.menu_publicar){
+            if (FirebaseAuth.getInstance().getCurrentUser() != null ){
+                startActivity(new Intent(this, PublicarActivity.class));
+            }
+            else {
+                startActivity(new Intent(this, LoginActivity.class));
+            }
+        }
+        else if (item.getItemId() == R.id.menu_logout){
+            logout();
+        }
+        else {
+            startActivity(new Intent(this, AcercaDeActivity.class));
+        }
+        return true;
+    }
+
+    public void logout(){
+        FirebaseAuth.getInstance().signOut();
+
+        Intent intent = new Intent(this, MainActivity.class);
+
+        startActivity(intent);
+    }
+
+
 
 
 }
