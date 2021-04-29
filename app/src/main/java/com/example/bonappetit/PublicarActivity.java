@@ -56,8 +56,10 @@ public class PublicarActivity extends AppCompatActivity implements View.OnClickL
 
 
     // Links de la foto de perfil y la foto de comida
-    final String[] FotoPerfil = new String[1];
-    final String[] FotoComida = new String[1];
+    List<String> linkFotoComida =  new ArrayList<>();
+    String StringFotoComida;
+    List<String> linkFotoPerfil = new ArrayList<>();
+    String StringFotoPerfil;
 
 
     // Variables de Elegir Imagenes para el menu
@@ -185,34 +187,36 @@ public class PublicarActivity extends AppCompatActivity implements View.OnClickL
 
 
     private void SubirFotoComida() {
-        // Subida de la Imagen - ImagenComida
-        String ImagenComida = listaImagenes.toString();
-        storageReference = FirebaseStorage.getInstance().getReference().child(ImagenComida);
-        storageReference.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-            @Override
-            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                Toast.makeText(PublicarActivity.this, "Subida de Imagen de un Plato Exitosa", Toast.LENGTH_SHORT).show(); }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                Toast.makeText(PublicarActivity.this, "Error al Subir Imagen de un Plato", Toast.LENGTH_SHORT).show(); }
-        });
+        for (i =0; i<listaImagenes.size() ; i++) {
+            storageReference = FirebaseStorage.getInstance().getReference().child(listaImagenes.get(i).toString());
+            storageReference.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                @Override
+                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                    Toast.makeText(PublicarActivity.this, "Subida de Imagen de un Plato Exitosa", Toast.LENGTH_SHORT).show(); }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    Toast.makeText(PublicarActivity.this, "Error al Subir Imagen de un Plato", Toast.LENGTH_SHORT).show(); }
+            });
 
-        // LINK Imagen Comida
-        storageReference.child(ImagenComida).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-            @Override
-            public void onSuccess(Uri uri)  {
-                //Download URL para ImagenComida
-                Task<Uri> downloadUri = FirebaseStorage.getInstance().getReference().child(ImagenComida).getDownloadUrl();
-                FotoComida[0] = downloadUri.toString();  //Link de la Imagen
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception exception) {
-                Toast.makeText(PublicarActivity.this, "Error al obtener el link de la imagen", Toast.LENGTH_SHORT).show();
-            }
-        });
+            // LINK Imagen Comida
+            storageReference.child(listaImagenes.get(i).toString()).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                @Override
+                public void onSuccess(Uri uri)  {
+                    //Download URL para ImagenComida
+                    Task<Uri> downloadUri = FirebaseStorage.getInstance().getReference().child(listaImagenes.get(i).toString()).getDownloadUrl();
+                    linkFotoComida.add(downloadUri.toString());  //Link de la Imagen
 
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception exception) {
+                    Toast.makeText(PublicarActivity.this, "Error al obtener el link de la imagen", Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
+
+        StringFotoComida = android.text.TextUtils.join(",", linkFotoComida);
     }
 
     private void SubirFotoPerfil() {
@@ -220,32 +224,38 @@ public class PublicarActivity extends AppCompatActivity implements View.OnClickL
          * Subida de las imagenes a Storage
          */
         // Subida de la Imagen - Foto de Perfil
-        String fotoPerfil = listaImagenes.toString();
-        storageReference = FirebaseStorage.getInstance().getReference().child(fotoPerfil);
-        storageReference.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-            @Override
-            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                Toast.makeText(PublicarActivity.this, "Subida de Foto de Perfil Exitosa", Toast.LENGTH_SHORT).show(); }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                Toast.makeText(PublicarActivity.this, "Error al Subir la Foto de Perfil", Toast.LENGTH_SHORT).show(); }
-        });
 
-        // LINK Foto Perfil
-        storageReference.child(fotoPerfil).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-            @Override
-            public void onSuccess(Uri uri)  {
-                //Download URL para fotoPerfil
-                Task<Uri> downloadUri = FirebaseStorage.getInstance().getReference().child(fotoPerfil).getDownloadUrl();
-                FotoPerfil[0] = downloadUri.toString();  //Link de la Imagen
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception exception) {
-                Toast.makeText(PublicarActivity.this, "Error al obtener el link de la imagen", Toast.LENGTH_SHORT).show();
-            }
-        });
+        for (i =0; i<listaImagenes.size() ; i++) {
+
+            storageReference = FirebaseStorage.getInstance().getReference().child(listaImagenes.get(i).toString());
+            storageReference.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                @Override
+                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                    Toast.makeText(PublicarActivity.this, "Subida de Foto de Perfil Exitosa", Toast.LENGTH_SHORT).show(); }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    Toast.makeText(PublicarActivity.this, "Error al Subir la Foto de Perfil", Toast.LENGTH_SHORT).show(); }
+            });
+
+            // LINK Foto Perfil
+            storageReference.child(listaImagenes.get(i).toString()).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                @Override
+                public void onSuccess(Uri uri)  {
+                    //Download URL para fotoPerfil
+                    Task<Uri> downloadUri = FirebaseStorage.getInstance().getReference().child(listaImagenes.get(i).toString()).getDownloadUrl();
+                    linkFotoPerfil.add(downloadUri.toString());  //Link de la Imagen
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception exception) {
+                    Toast.makeText(PublicarActivity.this, "Error al obtener el link de la imagen", Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
+
+        StringFotoPerfil = android.text.TextUtils.join(",", linkFotoPerfil);
+
 
     }
 
@@ -299,8 +309,8 @@ public class PublicarActivity extends AppCompatActivity implements View.OnClickL
         rest.setLatitud(et_Latitud.getText().toString());
         rest.setLongitud(et_Longitud.getText().toString());
         rest.setImagenesMenu(links);
-        rest.setImagenPerfil(FotoPerfil[0]);
-        rest.setImagenComida(FotoComida[0]);
+        rest.setImagenPerfil(StringFotoPerfil);
+        rest.setImagenComida(StringFotoComida);
 
         /// Obtenemos la instancia RealTime
        database=FirebaseDatabase.getInstance();
