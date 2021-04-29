@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">Bon Appétit</string>
+    <string name="app_date">Abril, 2021</string>
     <string name="menu_publicarRestaurante">Publicar Restaurante</string>
     <string name="menu_acerca">Acerca</string>
     <string name="usuario">Usuario</string>
@@ -9,4 +10,13 @@
     <string name="menu">Menú</string>
     <string name="visitar">Visitar</string>
     <string name="ordenar">Ordenar!</string>
+    <string name="acerca">Acerca de...</string>
+    <string name="app_slogan">¿Se te antoja algo?</string>
+    <string name="app_desarrolla">Desarrollado por: </string>
+    <string name="app_jp">Juan Pablo Mayorga</string>
+    <string name="app_montse">Montserrat Brown</string>
+    <string name="app_marce">Marcela Ortega</string>
+    <string name="app_des">     Somos una aplicación destinada a complacer los más antojados. Con la pandemia, se ha vuelto complicado
+    visualizar los menús cuando vamos a un restaurante, y usualmente, es necesario buscarlo y descargarlo localmente. Queremos evitar todo este
+        trajín, facilitandolo todo en una sola app. </string>
 </resources>
