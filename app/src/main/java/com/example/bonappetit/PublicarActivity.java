@@ -16,6 +16,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.SeekBar;
 import android.widget.Toast;
 
 import com.example.bonappetit.model.Restaurante;
@@ -25,6 +26,7 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.gms.tasks.Tasks;
+import com.google.common.base.Strings;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -49,6 +51,7 @@ public class PublicarActivity extends AppCompatActivity implements View.OnClickL
     private EditText et_Ubicacion;
     private EditText et_Latitud;
     private EditText et_Longitud;
+    private SeekBar sb_rangoPrecio;
     private Restaurante rest = new Restaurante();
     private Uri uri;
 
@@ -91,6 +94,7 @@ public class PublicarActivity extends AppCompatActivity implements View.OnClickL
         et_Ubicacion = findViewById(R.id.et_Ubicacion);
         et_Latitud = findViewById(R.id.et_Latitud);
         et_Longitud = findViewById(R.id.et_Longitud);
+        sb_rangoPrecio = findViewById(R.id.sb_rangoPrecio);
 
         bt_IngresarRestaurante = findViewById(R.id.bt_IngresarRestaurante);
         bt_buscarM = findViewById(R.id.bt_buscarM);
@@ -333,6 +337,8 @@ public class PublicarActivity extends AppCompatActivity implements View.OnClickL
         rest.setUbicacion(et_Ubicacion.getText().toString());
         rest.setLatitud(et_Latitud.getText().toString());
         rest.setLongitud(et_Longitud.getText().toString());
+        String valor = Strings.repeat("$",sb_rangoPrecio.getProgress()+1 );
+        rest.setRangoPrecio(valor);
         SubirFotoComida(rest.getNombre()+rest.getId());
         SubirFotoPerfil(rest.getNombre()+rest.getId());
         SubirFotosMenu(rest.getNombre()+rest.getId());
