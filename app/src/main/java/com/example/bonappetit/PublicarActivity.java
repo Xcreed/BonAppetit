@@ -303,7 +303,7 @@ public class PublicarActivity extends AppCompatActivity implements View.OnClickL
                 uri = data.getData();
                 listaImagenes.add(uri);
             } else {
-                for (int i = 0; i < clipData.getItemCount(); i++) {
+                for (int i = 0; i < clipData.getItemCount()-1; i++) {
                     listaImagenes.add(clipData.getItemAt(i).getUri());
                 }
             }
