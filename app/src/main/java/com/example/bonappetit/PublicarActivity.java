@@ -276,12 +276,10 @@ public class PublicarActivity extends AppCompatActivity implements View.OnClickL
     }
     private void buscarPlato() {
         Intent intent = new Intent(); intent.setType("image/*");
-        intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
         intent.setAction(Intent.ACTION_GET_CONTENT);
         startActivityForResult(Intent.createChooser(intent,"Seleccionar Imagenes:"), PICK_IMAGE_PLATE);
     }private void buscarMenu() {
         Intent intent = new Intent(); intent.setType("image/*");
-        intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
         intent.setAction(Intent.ACTION_GET_CONTENT);
         startActivityForResult(Intent.createChooser(intent,"Seleccionar Imagenes:"), PICK_IMAGE_MENU);
     }
