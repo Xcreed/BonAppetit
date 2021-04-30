@@ -2,11 +2,11 @@
     <string name="app_name">Bon Appétit</string>
     <string name="login">Inicio de Sesión</string>
     <string name="app_date">Abril, 2021</string>
-    <string name="menu_publicarRestaurante">Publicar Restaurante</string>
-    <string name="menu_acerca">Acerca</string>
+    <string name="menu_publicarRestaurante">Publicar restaurante</string>
+    <string name="menu_acerca">Acerca de</string>
     <string name="usuario">Usuario</string>
     <string name="contrasena">Contraseña</string>
-    <string name="menu_logout">Cerrar Sesión</string>
+    <string name="menu_logout">Cerrar sesión</string>
     <string name="middleDot"> • </string>
     <string name="menu">Menú</string>
     <string name="visitar">Visitar</string>
@@ -20,4 +20,24 @@
     <string name="app_des">     Somos una aplicación destinada a complacer los más antojados. Con la pandemia, se ha vuelto complicado
     visualizar los menús cuando vamos a un restaurante, y usualmente, es necesario buscarlo y descargarlo localmente. Queremos evitar todo este
         trajín, facilitandolo todo en una sola app. </string>
+    <string name="tv_ingresarRestaurante">Ingresa Tu Restaurante</string>
+    <string name="tv_InformacionGeneral">Información General</string>
+    <string name="tv_nombreRestaurante">Nombre del restaurante:</string>
+    <string name="tv_tipoComida">Tipo de Comida:</string>
+    <string name="tv_sitioWeb">Sitio web:</string>
+    <string name="tv_linkOrdenar">Link para ordenar:</string>
+    <string name="tv_rangoPrecio">Rango de precio:</string>
+    <string name="tv_dondeUbicas">¿Dónde te ubicas?</string>
+    <string name="tv_ubicacion">Ubicación:</string>
+    <string name="tv_latitud">Latitud:</string>
+    <string name="tv_longitud">Longitud:</string>
+    <string name="tv_fotosLogos">Fotos y Logos (JPG)</string>
+    <string name="tv_fotoPerfil">Foto de perfil:</string>
+    <string name="bt_fotoPerfil">Buscar foto de perfil</string>
+    <string name="tv_imagenPlato">Imagen de un plato:</string>
+    <string name="bt_imagenPlato">Buscar foto de un plato</string>
+    <string name="tv_imagenMenu">Imágenes del menú:</string>
+    <string name="bt_imagenMenu">Buscar imágenes del menú</string>
+    <string name="bt_ingresarRest">Ingresar Restaurante</string>
+
 </resources>

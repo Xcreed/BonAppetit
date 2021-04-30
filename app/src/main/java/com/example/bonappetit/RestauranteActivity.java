@@ -59,7 +59,7 @@ public class RestauranteActivity extends AppCompatActivity {
     private BootstrapButton visitar;
     private BootstrapButton ordenar;
     private ImageButton mapa;
-    private FloatingActionButton fab_favoritos;
+    private FloatingActionButton fba_favoritos;
     private static final int REQUEST_EXTERNAL_STORAGE = 1;
     private static String[] PERMISSIONS_STORAGE = {
             Manifest.permission.READ_EXTERNAL_STORAGE};
@@ -81,7 +81,7 @@ public class RestauranteActivity extends AppCompatActivity {
         visitar = findViewById(R.id.btVisitar);
         ordenar = findViewById(R.id.btOrdenar);
         mapa = findViewById(R.id.mapa);
-        fab_favoritos = findViewById(R.id.fba_favoritos);
+        fba_favoritos = (FloatingActionButton) findViewById(R.id.fba_favoritos);
 
         Restaurante restaurante = (Restaurante) getIntent().getSerializableExtra("restaurante");
 
@@ -96,10 +96,13 @@ public class RestauranteActivity extends AppCompatActivity {
         new DownloadImageTask(imagenComida)
                 .execute(restaurante.getImagenComida());
 
-        fab_favoritos.setOnClickListener(new View.OnClickListener() {
+        fba_favoritos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Toast.makeText(RestauranteActivity.this,restaurante.getNombre() + " agregado a favoritos", Toast.LENGTH_LONG).show();
                 agregarFavoritos(restaurante.getNombre());
+
+
             }
         });
         website = restaurante.getWebsite();
@@ -120,7 +123,7 @@ public class RestauranteActivity extends AppCompatActivity {
         ordenar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(linkOrdenar != null) {
+                if(linkOrdenar != null && !linkOrdenar.equals("")) {
                     Uri webpage = Uri.parse(linkOrdenar);
                     Intent intent = new Intent(Intent.ACTION_VIEW, webpage);
                     startActivity(intent);

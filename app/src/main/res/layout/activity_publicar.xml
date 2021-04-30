@@ -23,7 +23,7 @@
             android:id="@+id/tv_ingresaRest"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Ingresa tu Restaurante"
+            android:text="@string/tv_ingresarRestaurante"
             android:textAlignment="center"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
             android:textColor="#0C0505"
@@ -40,7 +40,7 @@
             android:id="@+id/tv_InformacionGeneral"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Informacion General"
+            android:text="@string/tv_InformacionGeneral"
             android:textAlignment="center"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             android:textColor="#000000"
@@ -57,7 +57,7 @@
             android:id="@+id/tv_Nombre"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Nombre del Restaurante:"
+            android:text="@string/tv_nombreRestaurante"
             android:textAppearance="@style/TextAppearance.AppCompat.Small"
             android:textColor="#221414" />
 
@@ -73,7 +73,7 @@
             android:id="@+id/tv_TipoCom"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Tipo de Comida:"
+            android:text="@string/tv_tipoComida"
             android:textColor="#150D0D" />
 
         <EditText
@@ -88,7 +88,7 @@
             android:id="@+id/tv_Website"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Sitio Web:"
+            android:text="@string/tv_sitioWeb"
             android:textColor="#130D0D" />
 
         <EditText
@@ -103,7 +103,7 @@
             android:id="@+id/tv_linkOrd"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Link para ordenar:"
+            android:text="@string/tv_linkOrdenar"
             android:textAppearance="@style/TextAppearance.AppCompat.Small"
             android:textColor="#090606" />
 
@@ -119,7 +119,7 @@
             android:id="@+id/tv_rangoPrecio"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Rango de precio:"
+            android:text="@string/tv_rangoPrecio"
             android:textAppearance="@style/TextAppearance.AppCompat.Small"
             android:textColor="#090606" />
 
@@ -145,7 +145,7 @@
             android:id="@+id/tv_DondeTeUbicas"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="¿Dónde te ubicas?"
+            android:text="@string/tv_dondeUbicas"
             android:textAlignment="center"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             android:textColor="#000000"
@@ -157,7 +157,7 @@
             android:id="@+id/tv_Ubicacion"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Ubicación:"
+            android:text="@string/tv_ubicacion"
             android:textColor="#191010" />
 
         <EditText
@@ -172,7 +172,7 @@
             android:id="@+id/tv_Latitud"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Latitud:"
+            android:text="@string/tv_latitud"
             android:textColor="#1E1212" />
 
         <EditText
@@ -187,7 +187,7 @@
             android:id="@+id/tv_Longitud"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Longitud:"
+            android:text="@string/tv_longitud"
             android:textAppearance="@style/TextAppearance.AppCompat.Small"
             android:textColor="#171010" />
 
@@ -207,7 +207,7 @@
             android:id="@+id/tv_FotosLogos"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Fotos y Logos (JPG)"
+            android:text="@string/tv_fotosLogos"
             android:textAlignment="center"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             android:textColor="#000000"
@@ -219,7 +219,7 @@
             android:id="@+id/tv_FotoPerfil"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Foto de Perfil:"
+            android:text="@string/tv_fotoPerfil"
             android:textColor="#150E0E" />
 
         <LinearLayout
@@ -232,7 +232,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Buscar foto de Perfil"
+                android:text="@string/bt_fotoPerfil"
                 android:textColor="#FFFFFF"
                 app:iconTint="#FFFFFF"
                 app:showOutline="true"
@@ -250,7 +250,7 @@
             android:id="@+id/tv_ImagenComida"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Imagen de un plato:"
+            android:text="@string/tv_imagenPlato"
             android:textColor="#231414" />
 
         <LinearLayout
@@ -263,7 +263,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Buscar foto de un plato"
+                android:text="@string/bt_imagenPlato"
                 app:showOutline="true"
                 app:roundedCorners="true"
                 app:bootstrapSize="md"
@@ -279,7 +279,7 @@
             android:id="@+id/textView17"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Imagen del Menú:"
+            android:text="@string/tv_imagenMenu"
             android:textColor="#131010" />
 
         <LinearLayout
@@ -292,7 +292,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Imagen del Menu"
+                android:text="@string/bt_imagenMenu"
                 app:showOutline="true"
                 app:roundedCorners="true"
                 app:bootstrapSize="md"
@@ -308,7 +308,7 @@
             android:id="@+id/bt_IngresarRestaurante"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Ingresar Restaurante"
+            android:text="@string/bt_ingresarRest"
             app:showOutline="false"
             app:roundedCorners="true"
             app:bootstrapSize="lg"

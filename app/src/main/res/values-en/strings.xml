@@ -1,0 +1,41 @@
+<resources>
+    <string name="app_name">Bon Appétit</string>
+    <string name="login">Login</string>
+    <string name="app_date">April, 2021</string>
+    <string name="menu_publicarRestaurante">Publish restaurant</string>
+    <string name="menu_acerca">About</string>
+    <string name="usuario">User</string>
+    <string name="contrasena">Password</string>
+    <string name="menu_logout">Logout</string>
+    <string name="middleDot"> • </string>
+    <string name="menu">Menu</string>
+    <string name="visitar">Visit</string>
+    <string name="ordenar">Place an order!</string>
+    <string name="acerca">About</string>
+    <string name="app_slogan">Craving something?</string>
+    <string name="app_desarrolla">Developed by: </string>
+    <string name="app_jp">Juan Pablo Mayorga</string>
+    <string name="app_montse">Montserrat Brown</string>
+    <string name="app_marce">Marcela Ortega</string>
+    <string name="app_des"> We are an application designed to please the most cravings. With the pandemic, it has become complicated visualize the menus when we go to a restaurant, and usually, it is necessary to search and download it locally. We want to avoid all this bustle, facilitating everything in a single app.</string>
+    <string name="tv_ingresarRestaurante">Publish Your Restaurant</string>
+    <string name="tv_InformacionGeneral">General Information</string>
+    <string name="tv_nombreRestaurante">Restaurant name:</string>
+    <string name="tv_tipoComida">Food type:</string>
+    <string name="tv_sitioWeb">Website:</string>
+    <string name="tv_linkOrdenar">Link to place an order:</string>
+    <string name="tv_rangoPrecio">Price range:</string>
+    <string name="tv_dondeUbicas">Where Are You Located?</string>
+    <string name="tv_ubicacion">Location:</string>
+    <string name="tv_latitud">Latitude:</string>
+    <string name="tv_longitud">Longitude:</string>
+    <string name="tv_fotosLogos">Logos and Pictures (JPG)</string>
+    <string name="tv_fotoPerfil">Profile picture:</string>
+    <string name="bt_fotoPerfil">Search profile picture</string>
+    <string name="tv_imagenPlato">Photo of a food plate:</string>
+    <string name="bt_imagenPlato">Search photos</string>
+    <string name="tv_imagenMenu">Menu images:</string>
+    <string name="bt_imagenMenu">Search for menu images</string>
+    <string name="bt_ingresarRest">Publish Restaurant</string>
+
+</resources>
