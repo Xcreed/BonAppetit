@@ -7,26 +7,30 @@
     android:orientation="vertical"
     tools:context=".AcercaDeActivity" >
 
-    <TextView
+    <com.beardedhen.androidbootstrap.AwesomeTextView
         android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/acerca"
+        app:bootstrapBrand="secondary"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
-    <TextView
+    <com.beardedhen.androidbootstrap.BootstrapLabel
         android:id="@+id/textView2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/app_name"
         android:textAlignment="center"
+        app:bootstrapBrand="warning"
+        app:bootstrapHeading="h1"
+        app:roundedCorners="true"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
 
     <Space
         android:layout_width="match_parent"
-        android:layout_height="37dp" />
+        android:layout_height="20dp" />
 
-    <TextView
+    <com.beardedhen.androidbootstrap.AwesomeTextView
         android:id="@+id/textView3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -38,25 +42,30 @@
         android:layout_width="match_parent"
         android:layout_height="18dp" />
 
-    <TextView
+    <com.beardedhen.androidbootstrap.AwesomeTextView
         android:id="@+id/textView4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/app_des"
+        android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
     <Space
         android:layout_width="match_parent"
-        android:layout_height="118dp" />
+        android:layout_height="70dp" />
 
-    <TextView
+
+
+    <com.beardedhen.androidbootstrap.AwesomeTextView
         android:id="@+id/textView5"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/app_desarrolla"
+        android:textAlignment="center"
+        android:textStyle="bold"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
-    <TextView
+    <com.beardedhen.androidbootstrap.AwesomeTextView
         android:id="@+id/textView6"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -64,7 +73,7 @@
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
-    <TextView
+    <com.beardedhen.androidbootstrap.AwesomeTextView
         android:id="@+id/textView10"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -72,7 +81,7 @@
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
-    <TextView
+    <com.beardedhen.androidbootstrap.AwesomeTextView
         android:id="@+id/textView11"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -82,13 +91,20 @@
 
     <Space
         android:layout_width="match_parent"
-        android:layout_height="118dp" />
+        android:layout_height="69dp" />
 
-    <TextView
+    <com.beardedhen.androidbootstrap.BootstrapWell
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="18dp"
+        app:bootstrapSize="xl">
+    <com.beardedhen.androidbootstrap.AwesomeTextView
         android:id="@+id/textView12"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/app_date"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textAlignment="center" />
+    </com.beardedhen.androidbootstrap.BootstrapWell>
 </LinearLayout>

@@ -25,6 +25,10 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.beardedhen.androidbootstrap.AwesomeTextView;
+import com.beardedhen.androidbootstrap.BootstrapButton;
+import com.beardedhen.androidbootstrap.BootstrapCircleThumbnail;
+import com.beardedhen.androidbootstrap.BootstrapLabel;
 import com.example.bonappetit.model.Restaurante;
 import com.squareup.picasso.Picasso;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -38,18 +42,18 @@ import java.util.Arrays;
 
 public class RestauranteActivity extends AppCompatActivity {
 
-    private TextView tvNombre;
-    private TextView tvtipoComida;
-    private TextView tvUbic;
-    private TextView tvPrecio;
+    private AwesomeTextView tvNombre;
+    private AwesomeTextView tvtipoComida;
+    private AwesomeTextView tvUbic;
+    private AwesomeTextView tvPrecio;
     private String website;
     private String linkOrdenar;
-    private ImageView imagenPerfil;
+    private BootstrapCircleThumbnail imagenPerfil;
     private ImageView imagenComida;
     private String latitud_longitud;
     private ArrayList<String> imagenesMenu;
-    private Button visitar;
-    private Button ordenar;
+    private BootstrapButton visitar;
+    private BootstrapButton ordenar;
     private ImageButton mapa;
     private FloatingActionButton fab_favoritos;
     private static final int REQUEST_EXTERNAL_STORAGE = 1;

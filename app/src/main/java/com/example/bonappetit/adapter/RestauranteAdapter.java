@@ -12,6 +12,9 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.beardedhen.androidbootstrap.AwesomeTextView;
+import com.beardedhen.androidbootstrap.BootstrapCircleThumbnail;
+import com.beardedhen.androidbootstrap.BootstrapLabel;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.module.AppGlideModule;
 import com.example.bonappetit.R;
@@ -84,8 +87,9 @@ public class RestauranteAdapter extends FirebaseRecyclerAdapter<
 
     class RestauranteViewholder
             extends RecyclerView.ViewHolder {
-        TextView nombre, rangoPrecio, ubicacion, tipoComida;
-        ImageView imagen;
+        BootstrapLabel nombre;
+        AwesomeTextView rangoPrecio, ubicacion, tipoComida;
+        BootstrapCircleThumbnail imagen;
         public RestauranteViewholder(@NonNull View itemView)
         {
             super(itemView);

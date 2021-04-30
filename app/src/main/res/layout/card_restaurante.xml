@@ -19,7 +19,7 @@
         android:clickable="false"
         android:textAlignment="inherit">
 
-        <TextView
+        <com.beardedhen.androidbootstrap.BootstrapLabel
             android:id="@+id/tvNombreRestaurante"
             android:layout_width="201dp"
             android:layout_height="31dp"
@@ -32,23 +32,24 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toEndOf="@+id/ivImagen"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:bootstrapBrand="warning"
+            app:bootstrapHeading="h5" />
 
-        <ImageView
+        <com.beardedhen.androidbootstrap.BootstrapCircleThumbnail
             android:id="@+id/ivImagen"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_marginStart="28dp"
             android:layout_marginTop="32dp"
             android:layout_marginBottom="32dp"
-            android:adjustViewBounds="true"
-            android:cropToPadding="true"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            app:hasBorder="false"
             tools:srcCompat="@tools:sample/avatars" />
 
-        <TextView
+        <com.beardedhen.androidbootstrap.AwesomeTextView
             android:id="@+id/tvTipoComida"
             android:layout_width="94dp"
             android:layout_height="18dp"
@@ -59,7 +60,7 @@
             app:layout_constraintStart_toEndOf="@+id/ivImagen"
             app:layout_constraintTop_toBottomOf="@+id/tvNombreRestaurante" />
 
-        <TextView
+        <com.beardedhen.androidbootstrap.AwesomeTextView
             android:id="@+id/tvRango"
             android:layout_width="81dp"
             android:layout_height="18dp"
@@ -67,9 +68,10 @@
             android:text="Rango"
             android:textAlignment="inherit"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/tvTipoComida" />
+            app:layout_constraintTop_toTopOf="@+id/tvTipoComida"
+            android:textStyle="bold"/>
 
-        <TextView
+        <com.beardedhen.androidbootstrap.AwesomeTextView
             android:id="@+id/tvUbicacion"
             android:layout_width="201dp"
             android:layout_height="22dp"
