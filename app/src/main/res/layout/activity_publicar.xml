@@ -14,12 +14,12 @@
         android:orientation="vertical"
         tools:context=".PublicarActivity">
 
-        <TextView
+        <com.beardedhen.androidbootstrap.AwesomeTextView
             android:id="@+id/tvvacio"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
-        <TextView
+        <com.beardedhen.androidbootstrap.BootstrapLabel
             android:id="@+id/tv_ingresaRest"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -27,28 +27,33 @@
             android:textAlignment="center"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
             android:textColor="#0C0505"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            app:bootstrapBrand="warning"
+            app:bootstrapHeading="h3" />
 
-        <TextView
+        <com.beardedhen.androidbootstrap.AwesomeTextView
             android:id="@+id/tvvacio2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
-        <TextView
+        <com.beardedhen.androidbootstrap.BootstrapLabel
             android:id="@+id/tv_InformacionGeneral"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Informacion General"
             android:textAlignment="center"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-            android:textColor="#000000" />
+            android:textColor="#000000"
+            android:textStyle="bold"
+            app:bootstrapBrand="danger"
+            app:bootstrapHeading="h5" />
 
-        <TextView
+        <com.beardedhen.androidbootstrap.AwesomeTextView
             android:id="@+id/tvvacio3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
-        <TextView
+        <com.beardedhen.androidbootstrap.AwesomeTextView
             android:id="@+id/tv_Nombre"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -64,7 +69,7 @@
             android:inputType="textPersonName"
             android:textAppearance="@style/TextAppearance.AppCompat.Small" />
 
-        <TextView
+        <com.beardedhen.androidbootstrap.AwesomeTextView
             android:id="@+id/tv_TipoCom"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -79,7 +84,7 @@
             android:inputType="textPersonName"
             android:textAppearance="@style/TextAppearance.AppCompat.Small" />
 
-        <TextView
+        <com.beardedhen.androidbootstrap.AwesomeTextView
             android:id="@+id/tv_Website"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -94,7 +99,7 @@
             android:inputType="textPersonName"
             android:textAppearance="@style/TextAppearance.AppCompat.Small" />
 
-        <TextView
+        <com.beardedhen.androidbootstrap.AwesomeTextView
             android:id="@+id/tv_linkOrd"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -110,7 +115,7 @@
             android:inputType="textPersonName"
             android:textAppearance="@style/TextAppearance.AppCompat.Small" />
 
-        <TextView
+        <com.beardedhen.androidbootstrap.AwesomeTextView
             android:id="@+id/tv_rangoPrecio"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -136,16 +141,19 @@
             android:layout_width="match_parent"
             android:layout_height="34dp" />
 
-        <TextView
+        <com.beardedhen.androidbootstrap.BootstrapLabel
             android:id="@+id/tv_DondeTeUbicas"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="¿Dónde te ubicas?"
             android:textAlignment="center"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-            android:textColor="#000000" />
+            android:textColor="#000000"
+            android:textStyle="bold"
+            app:bootstrapBrand="danger"
+            app:bootstrapHeading="h5" />
 
-        <TextView
+        <com.beardedhen.androidbootstrap.AwesomeTextView
             android:id="@+id/tv_Ubicacion"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -160,7 +168,7 @@
             android:inputType="textPersonName"
             android:textAppearance="@style/TextAppearance.AppCompat.Small" />
 
-        <TextView
+        <com.beardedhen.androidbootstrap.AwesomeTextView
             android:id="@+id/tv_Latitud"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -175,7 +183,7 @@
             android:inputType="textPersonName"
             android:textAppearance="@style/TextAppearance.AppCompat.Small" />
 
-        <TextView
+        <com.beardedhen.androidbootstrap.AwesomeTextView
             android:id="@+id/tv_Longitud"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -195,16 +203,19 @@
             android:layout_width="match_parent"
             android:layout_height="34dp" />
 
-        <TextView
+        <com.beardedhen.androidbootstrap.BootstrapLabel
             android:id="@+id/tv_FotosLogos"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Fotos y Logos (JPG)"
             android:textAlignment="center"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-            android:textColor="#000000" />
+            android:textColor="#000000"
+            android:textStyle="bold"
+            app:bootstrapBrand="danger"
+            app:bootstrapHeading="h5" />
 
-        <TextView
+        <com.beardedhen.androidbootstrap.AwesomeTextView
             android:id="@+id/tv_FotoPerfil"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -216,14 +227,18 @@
             android:layout_height="match_parent"
             android:orientation="horizontal">
 
-            <Button
+            <com.beardedhen.androidbootstrap.BootstrapButton
                 android:id="@+id/bt_buscarP"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Buscar foto de Perfil"
                 android:textColor="#FFFFFF"
-                app:iconTint="#FFFFFF" />
+                app:iconTint="#FFFFFF"
+                app:showOutline="true"
+                app:roundedCorners="true"
+                app:bootstrapSize="md"
+                app:bootstrapBrand="danger" />
 
         </LinearLayout>
 
@@ -231,7 +246,7 @@
             android:layout_width="match_parent"
             android:layout_height="29dp" />
 
-        <TextView
+        <com.beardedhen.androidbootstrap.AwesomeTextView
             android:id="@+id/tv_ImagenComida"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -243,12 +258,16 @@
             android:layout_height="match_parent"
             android:orientation="horizontal">
 
-            <Button
+            <com.beardedhen.androidbootstrap.BootstrapButton
                 android:id="@+id/bt_buscarC"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Buscar foto de un plato" />
+                android:text="Buscar foto de un plato"
+                app:showOutline="true"
+                app:roundedCorners="true"
+                app:bootstrapSize="md"
+                app:bootstrapBrand="danger" />
 
         </LinearLayout>
 
@@ -256,11 +275,11 @@
             android:layout_width="match_parent"
             android:layout_height="34dp" />
 
-        <TextView
+        <com.beardedhen.androidbootstrap.AwesomeTextView
             android:id="@+id/textView17"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Imagen del Menu:"
+            android:text="Imagen del Menú:"
             android:textColor="#131010" />
 
         <LinearLayout
@@ -268,12 +287,16 @@
             android:layout_height="match_parent"
             android:orientation="horizontal">
 
-            <Button
+            <com.beardedhen.androidbootstrap.BootstrapButton
                 android:id="@+id/bt_buscarM"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Imagen del Menu" />
+                android:text="Imagen del Menu"
+                app:showOutline="true"
+                app:roundedCorners="true"
+                app:bootstrapSize="md"
+                app:bootstrapBrand="danger" />
 
         </LinearLayout>
 
@@ -281,11 +304,15 @@
             android:layout_width="match_parent"
             android:layout_height="40dp" />
 
-        <Button
+        <com.beardedhen.androidbootstrap.BootstrapButton
             android:id="@+id/bt_IngresarRestaurante"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Ingresar Restaurante" />
+            android:text="Ingresar Restaurante"
+            app:showOutline="false"
+            app:roundedCorners="true"
+            app:bootstrapSize="lg"
+            app:bootstrapBrand="danger" />
 
     </LinearLayout>
 </ScrollView>
