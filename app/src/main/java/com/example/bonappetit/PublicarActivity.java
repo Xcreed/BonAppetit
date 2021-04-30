@@ -272,7 +272,7 @@ public class PublicarActivity extends AppCompatActivity implements View.OnClickL
 
     private void buscarProf() {
         Intent intent = new Intent(); intent.setType("image/*");
-        intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
+
         intent.setAction(Intent.ACTION_GET_CONTENT);
         startActivityForResult(Intent.createChooser(intent,"Seleccionar Imagenes:"), PICK_IMAGE_PROF);
     }
@@ -282,6 +282,7 @@ public class PublicarActivity extends AppCompatActivity implements View.OnClickL
         startActivityForResult(Intent.createChooser(intent,"Seleccionar Imagenes:"), PICK_IMAGE_PLATE);
     }private void buscarMenu() {
         Intent intent = new Intent(); intent.setType("image/*");
+        intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
         intent.setAction(Intent.ACTION_GET_CONTENT);
         startActivityForResult(Intent.createChooser(intent,"Seleccionar Imagenes:"), PICK_IMAGE_MENU);
     }
@@ -304,11 +305,12 @@ public class PublicarActivity extends AppCompatActivity implements View.OnClickL
         }
         if(resultCode == RESULT_OK && requestCode == PICK_IMAGE_MENU) {
             if(clipData == null) {
-                uri = data.getData();
-                listaImagenes.add(uri);
+//                uri = data.getData();
+                //listaImagenes.add(uri);
             } else {
-                for (int i = 0; i < clipData.getItemCount()-1; i++) {
-                    listaImagenes.add(clipData.getItemAt(i).getUri());
+                for (int i = 0; i < clipData.getItemCount(); i++) {
+                    Uri currentUri = clipData.getItemAt(i).getUri();
+                    listaImagenes.add(currentUri);
                 }
             }
         }
