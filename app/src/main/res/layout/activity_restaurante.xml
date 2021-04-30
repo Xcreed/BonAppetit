@@ -16,45 +16,33 @@
 
     <Space
         android:layout_width="match_parent"
-        android:layout_height="6dp" />
+        android:layout_height="10dp" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#DCDCDC"
         android:orientation="horizontal">
 
-        <Space
-            android:layout_width="17dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1" />
-
-        <com.beardedhen.androidbootstrap.BootstrapCircleThumbnail
+        <ImageView
             android:id="@+id/imgPerfil"
-            android:layout_width="74dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
             android:scaleType="centerCrop"
-            app:hasBorder="false"
+            android:layout_width="78dp"
+            android:layout_height="46dp"
+            android:layout_weight="1"
             tools:srcCompat="@tools:sample/avatars" />
 
         <Space
-            android:layout_width="18dp"
-            android:layout_height="match_parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_weight="1" />
 
-        <com.beardedhen.androidbootstrap.AwesomeTextView
+        <TextView
             android:id="@+id/tvNombre"
-            android:layout_width="261dp"
+            android:layout_width="290dp"
             android:layout_height="match_parent"
             android:text="TextView"
-            android:textAlignment="textStart"
+            android:textAlignment="center"
             android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
-
-        <Space
-            android:layout_width="12dp"
-            android:layout_height="match_parent" />
-
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fba_favoritos"
@@ -67,7 +55,7 @@
 
     <Space
         android:layout_width="match_parent"
-        android:layout_height="6dp" />
+        android:layout_height="11dp" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -75,7 +63,7 @@
         android:layout_weight="1"
         android:orientation="horizontal">
 
-        <com.beardedhen.androidbootstrap.AwesomeTextView
+        <TextView
             android:id="@+id/tvtipoComida"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -90,7 +78,7 @@
             android:layout_weight="1"
             android:text="@string/middleDot" />
 
-        <com.beardedhen.androidbootstrap.AwesomeTextView
+        <TextView
             android:id="@+id/tvUbic"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -104,12 +92,11 @@
             android:layout_weight="1"
             android:text="@string/middleDot" />
 
-        <com.beardedhen.androidbootstrap.AwesomeTextView
+        <TextView
             android:id="@+id/tvPrecio"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:textStyle="bold"
             android:text="TextView" />
 
     </LinearLayout>
@@ -126,21 +113,19 @@
 
     <Space
         android:layout_width="match_parent"
-        android:layout_height="6dp" />
+        android:layout_height="10dp" />
 
-    <com.beardedhen.androidbootstrap.BootstrapLabel
+    <TextView
         android:id="@+id/textView9"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/menu"
         android:textAlignment="center"
-        app:bootstrapBrand="warning"
-        app:bootstrapHeading="h3"
         android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
     <Space
         android:layout_width="match_parent"
-        android:layout_height="6dp" />
+        android:layout_height="10dp" />
 
     <HorizontalScrollView
         android:layout_width="match_parent"
@@ -158,44 +143,24 @@
         </LinearLayout>
     </HorizontalScrollView>
 
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="6dp" />
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal">
 
-        <com.beardedhen.androidbootstrap.BootstrapButton
+        <Button
             android:id="@+id/btVisitar"
             android:layout_width="203dp"
             android:layout_height="wrap_content"
-            android:text="@string/visitar"
-            app:showOutline="false"
-            app:roundedCorners="true"
-            app:bootstrapSize="lg"
-            app:bootstrapBrand="danger"/>
+            android:text="@string/visitar" />
 
-        <Space
-            android:layout_width="4dp"
-            android:layout_height="match_parent" />
-
-        <com.beardedhen.androidbootstrap.BootstrapButton
+        <Button
             android:id="@+id/btOrdenar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/ordenar"
-            app:showOutline="true"
-            app:roundedCorners="true"
-            app:bootstrapSize="lg"
-            app:bootstrapBrand="danger"/>
+            android:text="@string/ordenar" />
     </LinearLayout>
-
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="6dp" />
 
     <ImageButton
         android:id="@+id/mapa"

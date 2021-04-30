@@ -9,18 +9,24 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.SeekBar;
 import android.widget.Toast;
 
 import com.example.bonappetit.model.Restaurante;
+import com.google.android.gms.tasks.Continuation;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.gms.tasks.Tasks;
+import com.google.common.base.Strings;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -29,12 +35,15 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
 import java.io.File;
+import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
 public class PublicarActivity extends AppCompatActivity implements View.OnClickListener {
 
+    private final int PICK_IMAGE_MENU = 1;
+    private final int PICK_IMAGE_PLATE = 1;
     private EditText et_NombreRest;
     private EditText et_TipoComida;
     private EditText et_SitioWeb;
@@ -42,31 +51,36 @@ public class PublicarActivity extends AppCompatActivity implements View.OnClickL
     private EditText et_Ubicacion;
     private EditText et_Latitud;
     private EditText et_Longitud;
-
+    private SeekBar sb_rangoPrecio;
+    private Restaurante rest = new Restaurante();
+    private Uri uri;
 
     private Button bt_IngresarRestaurante;
     private Button bt_buscarM;
     private Button bt_buscarC;
     private Button bt_buscarP;
 
+    private Uri perfilURI;
+    private Uri platoURI;
+
     // Atributos para Storage y Real Time Database
-    public StorageReference storageReference;
-    private FirebaseDatabase database;
-    private DatabaseReference myRef;
+    public StorageReference storageReference = null;
+    private FirebaseDatabase database = null;
+    private DatabaseReference myRef = null;
 
 
     // Links de la foto de perfil y la foto de comida
-    final String[] FotoPerfil = new String[1];
-    final String[] FotoComida = new String[1];
+    private String StringFotoComida;
+    private String StringFotoPerfil;
 
 
     // Variables de Elegir Imagenes para el menu
-    int PICK_IMAGE = 100;
-    List<Uri> listaImagenes = new ArrayList<>();
-    int i = 0;
-    List<String> linksMenus = new ArrayList<>();
-    String links;
-
+    private int PICK_IMAGE_PROF = 100;
+    private List<Uri> listaImagenes = new ArrayList<>();
+    private int i = 0;
+    private List<String> linksMenus = new ArrayList<>();
+    private String links;
+    private ArrayList<Task<Uri>> uploadTasks = new ArrayList<Task<Uri>>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -80,6 +94,7 @@ public class PublicarActivity extends AppCompatActivity implements View.OnClickL
         et_Ubicacion = findViewById(R.id.et_Ubicacion);
         et_Latitud = findViewById(R.id.et_Latitud);
         et_Longitud = findViewById(R.id.et_Longitud);
+        sb_rangoPrecio = findViewById(R.id.sb_rangoPrecio);
 
         bt_IngresarRestaurante = findViewById(R.id.bt_IngresarRestaurante);
         bt_buscarM = findViewById(R.id.bt_buscarM);
@@ -133,142 +148,166 @@ public class PublicarActivity extends AppCompatActivity implements View.OnClickL
                 IngresarRestauranteRealTime();
                 break;
             case R.id.bt_buscarM:
-                busca();
-                SubirFotosMenu();
+                buscarMenu();
                 break;
             case R.id.bt_buscarC:
-                busca();
-                SubirFotoComida();
+                buscarPlato();
                 break;
             case R.id.bt_buscarP:
-                busca();
-                SubirFotoPerfil();
+                buscarProf();
                 break;
         }
     }
 
-    private void SubirFotosMenu() {
+    private void SubirFotosMenu(String nombreRest) {
+
 
         for (i =0; i<listaImagenes.size() ; i++) {
 
-            storageReference = FirebaseStorage.getInstance().getReference().child(listaImagenes.get(i).toString());
-            storageReference.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+            storageReference = FirebaseStorage.getInstance().getReference().child(nombreRest);
+            StorageReference imageRef = storageReference.child("menu" + i + ".png");
+            Task uploadTask = imageRef.putFile(listaImagenes.get(i));
+
+            Task<Uri> urlTask = uploadTask.continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
                 @Override
-                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                    Toast.makeText(PublicarActivity.this, "Subida de Imagen de Menu Exitosa", Toast.LENGTH_SHORT).show(); }
-            }).addOnFailureListener(new OnFailureListener() {
+                public Task<Uri> then(@NonNull Task<UploadTask.TaskSnapshot> task) throws Exception {
+                    if (!task.isSuccessful()) {
+                        throw task.getException();
+                    }
+
+                    // Continue with the task to get the download URL
+                    return imageRef.getDownloadUrl();
+                }
+            }).addOnCompleteListener(new OnCompleteListener<Uri>() {
                 @Override
-                public void onFailure(@NonNull Exception e) {
-                    Toast.makeText(PublicarActivity.this, "Error al Subir Imagen", Toast.LENGTH_SHORT).show(); }
+                public void onComplete(@NonNull Task<Uri> task) {
+                    if (task.isSuccessful()) {
+                        Uri downloadUri = task.getResult();
+                        String menuUrl = downloadUri.toString();
+                        linksMenus.add(menuUrl);
+                    } else {
+                        // Handle failures
+                        // ...
+                    }
+                }
             });
 
-            // LINK ImagenMenu
-            storageReference.child(listaImagenes.get(i).toString()).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-                @Override
-                public void onSuccess(Uri uri)  {
-                    //Download URL para ImagenComida
-                    Task<Uri> downloadUri = FirebaseStorage.getInstance().getReference().child(listaImagenes.get(i).toString()).getDownloadUrl();
-                    linksMenus.add(i, downloadUri.toString());  //Link de la Imagen
-                }
-            }).addOnFailureListener(new OnFailureListener() {
-                @Override
-                public void onFailure(@NonNull Exception exception) {
-                    Toast.makeText(PublicarActivity.this, "Error al obtener el link de la imagen", Toast.LENGTH_SHORT).show();
-                }
-            });
+            uploadTasks.add(urlTask);
         }
 
 
-         links = android.text.TextUtils.join(",", linksMenus);
-
     }
 
 
-    private void SubirFotoComida() {
-        // Subida de la Imagen - ImagenComida
-        String ImagenComida = listaImagenes.toString();
-        storageReference = FirebaseStorage.getInstance().getReference().child(ImagenComida);
-        storageReference.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-            @Override
-            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                Toast.makeText(PublicarActivity.this, "Subida de Imagen de un Plato Exitosa", Toast.LENGTH_SHORT).show(); }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                Toast.makeText(PublicarActivity.this, "Error al Subir Imagen de un Plato", Toast.LENGTH_SHORT).show(); }
-        });
+    private void SubirFotoComida(String nombreRest) {
+            storageReference = FirebaseStorage.getInstance().getReference().child(nombreRest);//.child(listaImagenes.get(i).toString())
+            StorageReference imageRef = storageReference.child("fotoPlato.png");
+            Task uploadTask  = imageRef.putFile(platoURI);
 
-        // LINK Imagen Comida
-        storageReference.child(ImagenComida).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-            @Override
-            public void onSuccess(Uri uri)  {
-                //Download URL para ImagenComida
-                Task<Uri> downloadUri = FirebaseStorage.getInstance().getReference().child(ImagenComida).getDownloadUrl();
-                FotoComida[0] = downloadUri.toString();  //Link de la Imagen
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception exception) {
-                Toast.makeText(PublicarActivity.this, "Error al obtener el link de la imagen", Toast.LENGTH_SHORT).show();
-            }
-        });
+            Task<Uri> urlTask = uploadTask.continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
+                @Override
+                public Task<Uri> then(@NonNull Task<UploadTask.TaskSnapshot> task) throws Exception {
+                    if (!task.isSuccessful()) {
+                        throw task.getException();
+                    }
 
+                    // Continue with the task to get the download URL
+                    return imageRef.getDownloadUrl();
+                }
+            }).addOnCompleteListener(new OnCompleteListener<Uri>() {
+                @Override
+                public void onComplete(@NonNull Task<Uri> task) {
+                    if (task.isSuccessful()) {
+                        Uri downloadUri = task.getResult();
+                        StringFotoComida = downloadUri.toString();
+                        rest.setImagenComida(StringFotoComida);
+                    } else {
+                        // Handle failures
+                        // ...
+                    }
+                }
+            });
+
+        uploadTasks.add(urlTask);
     }
 
-    private void SubirFotoPerfil() {
+    private void SubirFotoPerfil(String nombreRest) {
         /**
          * Subida de las imagenes a Storage
          */
-        // Subida de la Imagen - Foto de Perfil
-        String fotoPerfil = listaImagenes.toString();
-        storageReference = FirebaseStorage.getInstance().getReference().child(fotoPerfil);
-        storageReference.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+
+        storageReference = FirebaseStorage.getInstance().getReference().child(nombreRest);//.child(listaImagenes.get(i).toString())
+        StorageReference imageRef = storageReference.child("fotoPerfil.png");
+        Task uploadTask  = imageRef.putFile(perfilURI);
+
+        Task<Uri> urlTask = uploadTask.continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
             @Override
-            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                Toast.makeText(PublicarActivity.this, "Subida de Foto de Perfil Exitosa", Toast.LENGTH_SHORT).show(); }
-        }).addOnFailureListener(new OnFailureListener() {
+            public Task<Uri> then(@NonNull Task<UploadTask.TaskSnapshot> task) throws Exception {
+                if (!task.isSuccessful()) {
+                    throw task.getException();
+                }
+
+                // Continue with the task to get the download URL
+                return imageRef.getDownloadUrl();
+            }
+        }).addOnCompleteListener(new OnCompleteListener<Uri>() {
             @Override
-            public void onFailure(@NonNull Exception e) {
-                Toast.makeText(PublicarActivity.this, "Error al Subir la Foto de Perfil", Toast.LENGTH_SHORT).show(); }
+            public void onComplete(@NonNull Task<Uri> task) {
+                if (task.isSuccessful()) {
+                    Uri downloadUri = task.getResult();
+                    StringFotoPerfil = downloadUri.toString();
+                    rest.setImagenPerfil(StringFotoPerfil);
+                } else {
+                    // Handle failures
+                    // ...
+                }
+            }
         });
 
-        // LINK Foto Perfil
-        storageReference.child(fotoPerfil).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-            @Override
-            public void onSuccess(Uri uri)  {
-                //Download URL para fotoPerfil
-                Task<Uri> downloadUri = FirebaseStorage.getInstance().getReference().child(fotoPerfil).getDownloadUrl();
-                FotoPerfil[0] = downloadUri.toString();  //Link de la Imagen
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception exception) {
-                Toast.makeText(PublicarActivity.this, "Error al obtener el link de la imagen", Toast.LENGTH_SHORT).show();
-            }
-        });
+        uploadTasks.add(urlTask);
 
     }
 
-    private void busca() {
+    private void buscarProf() {
         Intent intent = new Intent(); intent.setType("image/*");
         intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
         intent.setAction(Intent.ACTION_GET_CONTENT);
-        startActivityForResult(Intent.createChooser(intent,"Seleccionar Imagenes:"), PICK_IMAGE);
+        startActivityForResult(Intent.createChooser(intent,"Seleccionar Imagenes:"), PICK_IMAGE_PROF);
+    }
+    private void buscarPlato() {
+        Intent intent = new Intent(); intent.setType("image/*");
+        intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
+        intent.setAction(Intent.ACTION_GET_CONTENT);
+        startActivityForResult(Intent.createChooser(intent,"Seleccionar Imagenes:"), PICK_IMAGE_PLATE);
+    }private void buscarMenu() {
+        Intent intent = new Intent(); intent.setType("image/*");
+        intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
+        intent.setAction(Intent.ACTION_GET_CONTENT);
+        startActivityForResult(Intent.createChooser(intent,"Seleccionar Imagenes:"), PICK_IMAGE_MENU);
     }
 
-    private Uri uri;
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
         ClipData clipData = data.getClipData();
 
-        if(resultCode == RESULT_OK && requestCode == PICK_IMAGE) {
+        if(resultCode == RESULT_OK && requestCode == PICK_IMAGE_PROF) {
+            if(clipData == null) {
+                perfilURI = data.getData();
+            }
+        }
+        if(resultCode == RESULT_OK && requestCode == PICK_IMAGE_PLATE) {
+            if(clipData == null) {
+                platoURI = data.getData();
+            }
+        }
+        if(resultCode == RESULT_OK && requestCode == PICK_IMAGE_MENU) {
             if(clipData == null) {
                 uri = data.getData();
                 listaImagenes.add(uri);
             } else {
-                for (int i = 0; i < clipData.getItemCount(); i++) {
+                for (int i = 0; i < clipData.getItemCount()-1; i++) {
                     listaImagenes.add(clipData.getItemAt(i).getUri());
                 }
             }
@@ -289,7 +328,7 @@ public class PublicarActivity extends AppCompatActivity implements View.OnClickL
 
 
         // Generamos el nuevo objeto restaurante con los valores
-        Restaurante rest = new Restaurante();
+
         rest.setId(Integer.toString(id));
         rest.setNombre(et_NombreRest.getText().toString());
         rest.setTipoComida(et_TipoComida.getText().toString());
@@ -298,14 +337,28 @@ public class PublicarActivity extends AppCompatActivity implements View.OnClickL
         rest.setUbicacion(et_Ubicacion.getText().toString());
         rest.setLatitud(et_Latitud.getText().toString());
         rest.setLongitud(et_Longitud.getText().toString());
-        rest.setImagenesMenu(links);
-        rest.setImagenPerfil(FotoPerfil[0]);
-        rest.setImagenComida(FotoComida[0]);
+        String valor = Strings.repeat("$",sb_rangoPrecio.getProgress()+1 );
+        rest.setRangoPrecio(valor);
+        SubirFotoComida(rest.getNombre()+rest.getId());
+        SubirFotoPerfil(rest.getNombre()+rest.getId());
+        SubirFotosMenu(rest.getNombre()+rest.getId());
+        //
 
-        /// Obtenemos la instancia RealTime
-       database=FirebaseDatabase.getInstance();
-       myRef = database.getReference("restaurantes");
-       // Enviamos los valores del restaurante a Real Time Database utilizando el Nombre como identificador
-        myRef.child(rest.getNombre()).setValue(rest);
+        //rest.setImagenComida(StringFotoComida);
+        Tasks.whenAllComplete(uploadTasks).addOnCompleteListener(new OnCompleteListener<List<Task<?>>>() {
+            @Override
+            public void onComplete(@NonNull Task<List<Task<?>>> task) {
+                links = android.text.TextUtils.join(", ", linksMenus);
+                rest.setImagenesMenu(links);
+                database=FirebaseDatabase.getInstance();
+                myRef = database.getReference("restaurantes");
+                // Enviamos los valores del restaurante a Real Time Database utilizando el Nombre como identificador
+                myRef.child(rest.getNombre()+rest.getId()).setValue(rest);
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
     }
 }
