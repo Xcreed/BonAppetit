@@ -19,6 +19,8 @@ import android.widget.EditText;
 import android.widget.SeekBar;
 import android.widget.Toast;
 
+import com.beardedhen.androidbootstrap.BootstrapButton;
+import com.beardedhen.androidbootstrap.BootstrapEditText;
 import com.example.bonappetit.model.Restaurante;
 import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -55,10 +57,10 @@ public class PublicarActivity extends AppCompatActivity implements View.OnClickL
     private Restaurante rest = new Restaurante();
     private Uri uri;
 
-    private Button bt_IngresarRestaurante;
-    private Button bt_buscarM;
-    private Button bt_buscarC;
-    private Button bt_buscarP;
+    private BootstrapButton bt_IngresarRestaurante;
+    private BootstrapButton bt_buscarM;
+    private BootstrapButton bt_buscarC;
+    private BootstrapButton bt_buscarP;
 
     private Uri perfilURI;
     private Uri platoURI;

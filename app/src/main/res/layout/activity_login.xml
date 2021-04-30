@@ -1,73 +1,92 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".LoginActivity">
 
-    <TextView
+    <com.beardedhen.androidbootstrap.BootstrapLabel
+        android:id="@+id/textView13"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/login"
+        app:roundedCorners="true"
+        app:bootstrapHeading="h3"
+        app:bootstrapBrand="warning" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="204dp" />
+
+    <com.beardedhen.androidbootstrap.AwesomeTextView
         android:id="@+id/textViewUsuario"
-        android:layout_width="122dp"
-        android:layout_height="51dp"
-        android:layout_marginStart="33dp"
-        android:layout_marginTop="200dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:text="@string/usuario"
-        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        app:bootstrapHeading="h3" />
 
-    <TextView
-        android:id="@+id/textViewPW"
-        android:layout_width="183dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="33dp"
-        android:layout_marginTop="267dp"
-        android:text="@string/contrasena"
-        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
+    <com.beardedhen.androidbootstrap.BootstrapEditText
         android:id="@+id/editTextTextUsuario"
-        android:layout_width="174dp"
-        android:layout_height="45dp"
-        android:layout_marginStart="224dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:autofillHints=""
         android:ems="10"
         android:inputType="textEmailAddress"
-        app:layout_constraintBottom_toBottomOf="@+id/textViewUsuario"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:bootstrapSize="lg" />
 
-    <EditText
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="18dp" />
+
+    <com.beardedhen.androidbootstrap.AwesomeTextView
+        android:id="@+id/textViewPW"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/contrasena"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        app:bootstrapHeading="h4" />
+
+    <com.beardedhen.androidbootstrap.BootstrapEditText
         android:id="@+id/editTextTextPassword"
-        android:layout_width="175dp"
-        android:layout_height="41dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:autofillHints=""
         android:ems="10"
         android:inputType="textPassword"
-        app:layout_constraintBottom_toBottomOf="@+id/textViewPW"
-        app:layout_constraintStart_toStartOf="@+id/editTextTextUsuario" />
+        app:bootstrapSize="lg" />
 
-    <Button
-        android:id="@+id/buttonLogin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="39dp"
-        android:onClick="login"
-        android:text="Log In"
-        app:layout_constraintBottom_toBottomOf="@+id/buttonCrear"
-        app:layout_constraintEnd_toEndOf="parent" />
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="47dp" />
 
-    <Button
-        android:id="@+id/buttonCrear"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="46dp"
-        android:layout_marginBottom="292dp"
-        android:onClick="registrar"
-        android:text="Crear"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <com.beardedhen.androidbootstrap.BootstrapButton
+            android:id="@+id/buttonCrear"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:onClick="registrar"
+            android:text="Crear"
+            app:bootstrapBrand="danger"
+            app:bootstrapSize="xl"
+            app:roundedCorners="true"
+            app:showOutline="true" />
+
+        <com.beardedhen.androidbootstrap.BootstrapButton
+            android:id="@+id/buttonLogin"
+            android:layout_width="218dp"
+            android:layout_height="wrap_content"
+            android:onClick="login"
+            android:text="Log In"
+            app:bootstrapBrand="danger"
+            app:bootstrapSize="xl"
+            app:roundedCorners="true" />
+    </LinearLayout>
+
+</LinearLayout>

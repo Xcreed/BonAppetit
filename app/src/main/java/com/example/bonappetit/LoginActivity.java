@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.beardedhen.androidbootstrap.BootstrapEditText;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -21,8 +22,8 @@ import com.google.firebase.auth.FirebaseUser;
 public class LoginActivity extends AppCompatActivity {
 
 
-    private EditText etUsuario;
-    private EditText etPasswd;
+    private BootstrapEditText etUsuario;
+    private BootstrapEditText etPasswd;
     private FirebaseAuth mAuth;
 
     @Override

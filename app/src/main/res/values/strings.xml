@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">Bon Appétit</string>
+    <string name="login">Inicio de Sesión</string>
     <string name="app_date">Abril, 2021</string>
     <string name="menu_publicarRestaurante">Publicar Restaurante</string>
     <string name="menu_acerca">Acerca</string>
